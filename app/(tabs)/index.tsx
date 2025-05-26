@@ -1,75 +1,151 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Heading, HStack, View, VStack } from "@gluestack-ui/themed";
+// @ts-ignore
+import HomeHeader from "@/components/Home/HomeHeader";
+import StocktakeCard from "@/components/Inventories/StocktakeCard";
+import Colors from "@/constants/Colors";
+import { ScrollView } from "@gluestack-ui/themed";
+import { TouchableOpacity, useWindowDimensions } from "react-native";
+import Carousel from "react-native-reanimated-carousel";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const AuthorizedPage = () => {
+  const data = [
+    {
+      id: 1,
+      image: "https://picsum.photos/200/300",
+      title: "WeWork",
+      date: "31/07/2024",
+      address: "18 Rue du Fossé des Tanneurs 74200 Thonon-les-Bains",
+      status: "going",
+    },
+    {
+      id: 2,
+      image: "https://picsum.photos/300/400",
+      title: "BioTex",
+      date: "01/08/2024",
+      address: "Zac du Parc des Tulipes 95500 Gonesse",
+      status: "todo",
+    },
+    {
+      id: 3,
+      image: "https://picsum.photos/250/300",
+      title: "Morning",
+      date: "24/11/2024",
+      address: "12 Rue de la République 69002 Lyon",
+      status: "todo",
+    },
+    {
+      id: 4,
+      image: "https://picsum.photos/300/450",
+      title: "Inventaire 4",
+      date: "26/11/2024",
+      address: "25 Rue de l’Innovation 75001 Paris",
+      status: "todo",
+    },
+  ];
 
-export default function HomeScreen() {
+  const { width: SCREEN_WIDTH, height } = useWindowDimensions();
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View bg="$white" flex="1">
+      <HomeHeader p="$5" />
+      <ScrollView
+        flex="1"
+        contentContainerStyle={{ paddingBottom: 126 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View>
+          <HStack items="center" justify="space-between" px="$5">
+            <View>
+              <Heading size="4xl" bold color="$black">
+                Hello,
+              </Heading>
+              <HStack items="center">
+                <Heading size="4xl" bold color="$black">
+                  Yassine{" "}
+                </Heading>
+                <Heading size="4xl" bold color={Colors.primary}>
+                  !
+                </Heading>
+              </HStack>
+            </View>
+          </HStack>
+          <View px="$5" pt="$5">
+            <VStack space="md">
+              {/* <VStack
+                                space="sm"
+                                p="$5"
+                                bg="$indigo100"
+                                rounded="$xl"
+                            >
+                                <HStack space="md" items="center">
+                                    <Icon
+                                        as={InfoIcon}
+                                        size={24}
+                                        color="$indigo500"
+                                    />
+                                    <Text size="lg" color="$indigo500" medium>
+                                        Bienvenue dans l'app
+                                    </Text>
+                                </HStack>
+                                <Text size="sm" color="$indigo500">
+                                    Vous pouvez commencer à ajouter des
+                                    inventaires
+                                </Text>
+                            </VStack> */}
+              <View>
+                <Heading size="xl" color={Colors.text}>
+                  Incoming stocktakes
+                </Heading>
+              </View>
+              <View items="center">
+                <HStack space="sm" items="center">
+                  <TouchableOpacity>
+                    <View
+                      bg="$backgroundDark800"
+                      h={12}
+                      w={12}
+                      rounded="$full"
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <View bg="$backgroundDark400" h={8} w={8} rounded="$full" />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <View bg="$backgroundDark400" h={8} w={8} rounded="$full" />
+                  </TouchableOpacity>
+                </HStack>
+              </View>
+              {/* <FlatList
+                                gap={14}
+                                data={data}
+                                renderItem={({ item }) => (
+                                    <StocktakeCard item={item} />
+                                )}
+                                contentContainerStyle={{
+                                    gap: 14,
+                                    // paddingBottom: 200,
+                                }}
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                            /> */}
+              <View style={{ flex: 1 }}>
+                <Carousel
+                  loop
+                  width={SCREEN_WIDTH}
+                  height={280}
+                  autoPlay={true}
+                  data={data}
+                  scrollAnimationDuration={1000}
+                  autoPlayInterval={5000}
+                  renderItem={({ item }) => <StocktakeCard item={item} />}
+                />
+              </View>
+            </VStack>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+export default AuthorizedPage;
