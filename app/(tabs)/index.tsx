@@ -1,7 +1,7 @@
 import { Heading, HStack, View, VStack } from "@gluestack-ui/themed";
 // @ts-ignore
 import HomeHeader from "@/components/Home/HomeHeader";
-import StocktakeCard from "@/components/Inventories/StocktakeCard";
+import StocktakeCard from "@/components/Stocktakes/StocktakeCard";
 import Colors from "@/constants/Colors";
 import { ScrollView } from "@gluestack-ui/themed";
 import { TouchableOpacity, useWindowDimensions } from "react-native";

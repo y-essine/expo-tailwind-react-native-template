@@ -40,18 +40,16 @@ const AddPage = () => {
 
           {/* Page title */}
           <Heading size="2xl" mb="$2">
-            Ajouter une mission d'inventaire
+            Add a stocktake mission
           </Heading>
 
           {/* Form */}
           <FormControl isRequired={true}>
             <FormControlLabel>
-              <FormControlLabelText medium>
-                Nom de l'inventaire
-              </FormControlLabelText>
+              <FormControlLabelText medium>Stocktake name</FormControlLabelText>
             </FormControlLabel>
             <Input>
-              <InputField placeholder="Nom" />
+              <InputField placeholder="Stocktake name" />
             </Input>
           </FormControl>
           <FormControl isRequired={true}>
@@ -59,24 +57,22 @@ const AddPage = () => {
               <FormControlLabelText medium>Description</FormControlLabelText>
             </FormControlLabel>
             <Input>
-              <InputField placeholder="Desription ou commentaire" />
+              <InputField placeholder="Description or comment" />
             </Input>
           </FormControl>
           <FormControl isRequired={true}>
             <FormControlLabel>
-              <FormControlLabelText medium>
-                Date d'inventaire
-              </FormControlLabelText>
+              <FormControlLabelText medium>Stocktake date</FormControlLabelText>
             </FormControlLabel>
             <Input>
-              <InputField placeholder="Date et heure" />
+              <InputField placeholder="Date and time" />
             </Input>
           </FormControl>
         </VStack>
 
         {/* Bottom button */}
         <BottomButton
-          title="Suivant"
+          title="Next"
           onPress={() => {}}
           iconRight={<Icon as={ArrowRight} size="md" color="white" />}
         />
