@@ -22,6 +22,8 @@ const SplashComponent = () => {
 
   const { next, time } = useLocalSearchParams();
 
+  const nextRoute = next ? next + "" : "/";
+
   useEffect(() => {
     if (next) console.log("next", next);
   }, [next, time]);
@@ -29,7 +31,7 @@ const SplashComponent = () => {
   useEffect(() => {
     opacity.value = withTiming(1, { duration: 1000, easing: Easing.ease });
     setTimeout(() => {
-      router.replace(next + "");
+      router.replace(nextRoute);
     }, time - 0 || 3000);
   }, []);
 

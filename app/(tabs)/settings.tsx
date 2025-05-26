@@ -1,17 +1,15 @@
-import { 
-  SafeAreaView, 
-  Text, 
-  View, 
-  ScrollView, 
-  Heading, 
-  VStack, 
-  HStack,
-  Pressable,
-  Box
+import {
+  Box,
+  Heading,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+  VStack,
 } from "@gluestack-ui/themed";
 import LottieView from "lottie-react-native";
 import { useState } from "react";
-import { TouchableOpacity, Dimensions } from "react-native";
+import { Dimensions, TouchableOpacity } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -26,47 +24,53 @@ const animations = [
     id: 1,
     name: "Break Time",
     file: require("@/assets/anims/break.json"),
-    description: "Coffee break animation"
+    description: "Coffee break animation",
   },
   {
     id: 2,
     name: "Claude Background",
     file: require("@/assets/anims/claude_bg.json"),
-    description: "AI assistant theme"
+    description: "AI assistant theme",
   },
   {
     id: 3,
     name: "Gradient Background",
     file: require("@/assets/anims/gradient_bg.json"),
-    description: "Beautiful gradient effects"
+    description: "Beautiful gradient effects",
   },
   {
     id: 4,
     name: "Planet",
     file: require("@/assets/anims/planet.json"),
-    description: "Space exploration theme"
+    description: "Space exploration theme",
   },
   {
     id: 5,
     name: "Poker",
     file: require("@/assets/anims/poker.json"),
-    description: "Card game animation"
+    description: "Card game animation",
   },
   {
     id: 6,
     name: "Sims",
     file: require("@/assets/anims/sims.json"),
-    description: "Life simulation theme"
+    description: "Life simulation theme",
   },
   {
     id: 7,
     name: "Stars",
     file: require("@/assets/anims/stars.json"),
-    description: "Twinkling stars effect"
-  }
+    description: "Twinkling stars effect",
+  },
 ];
 
-const AnimationCard = ({ animation, index }: { animation: any, index: number }) => {
+const AnimationCard = ({
+  animation,
+  index,
+}: {
+  animation: any;
+  index: number;
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const scale = useSharedValue(1);
   const opacity = useSharedValue(0.8);
@@ -112,10 +116,10 @@ const AnimationCard = ({ animation, index }: { animation: any, index: number }) 
           elevation={3}
         >
           <VStack space="md">
-            <View 
-              h={200} 
-              w="100%" 
-              items="center" 
+            <View
+              h={200}
+              w="100%"
+              items="center"
               justify="center"
               bg="$backgroundLight50"
               rounded="$xl"
@@ -127,7 +131,7 @@ const AnimationCard = ({ animation, index }: { animation: any, index: number }) 
                 style={{ width: 150, height: 150 }}
               />
             </View>
-            
+
             <VStack space="xs">
               <Heading size="lg" color="$backgroundDark900">
                 {animation.name}
@@ -136,7 +140,7 @@ const AnimationCard = ({ animation, index }: { animation: any, index: number }) 
                 {animation.description}
               </Text>
               <Text size="xs" color="$backgroundDark400">
-                Tap to {isPlaying ? 'pause' : 'play'}
+                Tap to {isPlaying ? "pause" : "play"}
               </Text>
             </VStack>
           </VStack>
@@ -149,8 +153,8 @@ const AnimationCard = ({ animation, index }: { animation: any, index: number }) 
 const SettingsPage = () => {
   return (
     <SafeAreaView flex="1" bg="$backgroundLight100">
-      <ScrollView 
-        flex="1" 
+      <ScrollView
+        flex="1"
         contentContainerStyle={{ paddingBottom: 100 }}
         showsVerticalScrollIndicator={false}
       >
@@ -166,9 +170,9 @@ const SettingsPage = () => {
 
           <VStack space="md">
             {animations.map((animation, index) => (
-              <AnimationCard 
-                key={animation.id} 
-                animation={animation} 
+              <AnimationCard
+                key={animation.id}
+                animation={animation}
                 index={index}
               />
             ))}
